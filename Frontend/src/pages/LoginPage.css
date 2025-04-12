@@ -1,0 +1,89 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(207, 194, 205, 0.868);
+}
+
+.login-form {
+    background: rgb(244, 148, 223);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.app-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-form input {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #6d6b6b;
+    color: rgb(6, 6, 6);
+}
+
+.login-form input::placeholder {
+    color: #efe5e5;
+}
+
+.login-form button {
+    padding: 0.75rem;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #4e4b4b;
+}
+
+.register-btn {
+    margin-top: 0.5rem;
+    background-color: #ccc;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: #4e4b4b;
+}
+
+.login-form select {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #6d6b6b;
+    color: rgb(231, 220, 220);
+}
+
+.login-form select option {
+    background-color: #6d6b6b;
+    color: rgb(241, 231, 231);
+}
+
+.error-text {
+    color: red;
+    margin-top: 1rem;
+    text-align: center;
+}
