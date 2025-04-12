@@ -26,4 +26,10 @@ class AppointmentsManager extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'doctor_id');
     }
+
+    public function getAllAppointments(){
+        return response()->json(
+            AppointmentsManager::with(['doctor', 'patient'])->get()
+        );
+    }
 }

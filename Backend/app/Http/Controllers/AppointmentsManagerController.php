@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentsManagerController extends Controller
 {
-    // Creating the appointment by the admin or the patient
     public function CreateAppointment(Request $request)
     {
         $request->validate([
@@ -17,14 +16,13 @@ class AppointmentsManagerController extends Controller
             'doctor_id' => 'required|exists:users,id',
         ]);
 
-        // To prevent double booking for a patient 
         $exists = AppointmentsManager::where('patient_id', Auth::id())
             ->where('date', $request->date)
             ->where('time', $request->time)
             ->exists();
 
         if ($exists) {
-            return response()->json(['message' => 'you already have an appointment at this time.'], 409);
+            return response()->json(['message' => 'You already have an appointment at this time.'], 409);
         }
 
         $appointment = AppointmentsManager::create([
@@ -41,17 +39,18 @@ class AppointmentsManagerController extends Controller
     public function index()
     {
         $user = Auth::user();
-
+    
         if ($user->role === 'admin') {
             return AppointmentsManager::with(['patient', 'doctor'])->get();
         } elseif ($user->role === 'doctor') {
-            return $user->assignedAppointments()->with('patient')->get();
+            return $user->AssignedAppointments()->with('patient')->get();
         } else {
             return $user->appointments()->with('doctor')->get();
         }
     }
+    
 
-    public function UpdateStatus(Request $request, $id)
+    public function updateStatus(Request $request, $id)
     {
         $request->validate([
             'status' => 'required|in:pending,approved,completed,cancelled'
@@ -72,7 +71,7 @@ class AppointmentsManagerController extends Controller
     public function getAllAppointments()
     {
         return response()->json(
-            AppointmentsManager::with(['doctor', 'patient'])->get()
+          AppointmentsManager::with(['patient', 'doctor'])->get()
         );
     }
 }
